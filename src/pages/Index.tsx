@@ -8,17 +8,17 @@ import SystemInfo from '@/components/SystemInfo';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <Header />
       
       <main className="p-6">
         <div className="max-w-7xl mx-auto space-y-6">
           {/* Welcome Section */}
           <div className="text-center space-y-2 mb-8">
-            <h2 className="text-3xl font-bold text-white">Welcome to Fangal Local Server</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              A modern, intuitive local development environment designed for developers. 
-              Manage your projects, services, and configurations with ease.
+            <h2 className="text-3xl font-bold text-blue-900">Bienvenue sur Fangal Local Server</h2>
+            <p className="text-blue-700 max-w-2xl mx-auto text-lg">
+              Un environnement de développement local moderne et intuitif conçu pour les développeurs. 
+              Gérez vos projets, services et configurations en toute simplicité.
             </p>
           </div>
 
