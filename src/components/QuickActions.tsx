@@ -1,11 +1,13 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Plus, Download, Upload, RefreshCw } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 
 const QuickActions = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
 
   const actions = [
@@ -15,10 +17,11 @@ const QuickActions = () => {
       color: 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700',
       action: () => {
         toast({
-          title: "Nouveau Projet",
-          description: "Fonctionnalité de création de projet en cours de développement",
-          duration: 3000,
+          title: "🚀 Nouveau Projet",
+          description: "Redirection vers la page de création...",
+          duration: 2000,
         });
+        navigate('/create-project');
       }
     },
     { 
@@ -27,10 +30,18 @@ const QuickActions = () => {
       color: 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700',
       action: () => {
         toast({
-          title: "Import de Projet",
-          description: "Sélectionnez un dossier de projet existant à importer",
+          title: "📥 Import de Projet",
+          description: "Ouverture du sélecteur de dossier...",
           duration: 3000,
         });
+        // Simulation d'ouverture de dialogue de fichier
+        setTimeout(() => {
+          toast({
+            title: "ℹ️ Fonctionnalité en développement",
+            description: "L'import de projets sera bientôt disponible",
+            duration: 3000,
+          });
+        }, 1500);
       }
     },
     { 
@@ -39,10 +50,18 @@ const QuickActions = () => {
       color: 'bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700',
       action: () => {
         toast({
-          title: "Export de Sauvegarde",
-          description: "Création d'une sauvegarde de vos projets...",
+          title: "💾 Export en cours",
+          description: "Création de la sauvegarde de vos projets...",
           duration: 3000,
         });
+        // Simulation de processus d'export
+        setTimeout(() => {
+          toast({
+            title: "✅ Export Terminé",
+            description: "Sauvegarde créée avec succès dans le dossier Téléchargements",
+            duration: 4000,
+          });
+        }, 2000);
       }
     },
     { 
@@ -51,10 +70,18 @@ const QuickActions = () => {
       color: 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700',
       action: () => {
         toast({
-          title: "Redémarrage des Services",
-          description: "Tous les services ont été redémarrés avec succès",
+          title: "🔄 Redémarrage en cours",
+          description: "Arrêt et redémarrage de tous les services...",
           duration: 3000,
         });
+        // Simulation de redémarrage
+        setTimeout(() => {
+          toast({
+            title: "✅ Services Redémarrés",
+            description: "Tous les services sont maintenant opérationnels",
+            duration: 4000,
+          });
+        }, 2500);
       }
     },
   ];

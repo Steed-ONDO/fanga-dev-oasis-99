@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
@@ -7,6 +8,7 @@ import ProjectCard from './ProjectCard';
 import { useToast } from '@/hooks/use-toast';
 
 const ProjectsList = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [projects, setProjects] = useState([
     {
@@ -35,22 +37,13 @@ const ProjectsList = () => {
     }
   ]);
 
-  const addNewProject = () => {
-    const newProject = {
-      id: projects.length + 1,
-      name: `Nouveau Projet ${projects.length + 1}`,
-      path: `/Users/dev/htdocs/projet${projects.length + 1}`,
-      type: 'React',
-      status: 'inactive' as const,
-      url: `http://localhost/projet${projects.length + 1}`
-    };
-    
-    setProjects([...projects, newProject]);
+  const handleCreateProject = () => {
     toast({
-      title: "Nouveau Projet Créé",
-      description: `${newProject.name} a été ajouté avec succès`,
-      duration: 3000,
+      title: "🚀 Redirection",
+      description: "Ouverture de la page de création de projet...",
+      duration: 2000,
     });
+    navigate('/create-project');
   };
 
   const updateProjectStatus = (projectId: number, newStatus: 'active' | 'inactive') => {
@@ -59,14 +52,14 @@ const ProjectsList = () => {
     ));
   };
 
+  const updateProjectName = (projectId: number, newName: string) => {
+    setProjects(prev => prev.map(project => 
+      project.id === projectId ? { ...project, name: newName } : project
+    ));
+  };
+
   const deleteProject = (projectId: number) => {
-    const projectName = projects.find(p => p.id === projectId)?.name;
     setProjects(prev => prev.filter(project => project.id !== projectId));
-    toast({
-      title: "Projet Supprimé",
-      description: `${projectName} a été supprimé avec succès`,
-      duration: 3000,
-    });
   };
 
   return (
@@ -75,7 +68,7 @@ const ProjectsList = () => {
         <div className="flex items-center justify-between">
           <CardTitle className="text-blue-800">Vos Projets</CardTitle>
           <Button
-            onClick={addNewProject}
+            onClick={handleCreateProject}
             className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200"
             size="sm"
           >
@@ -92,13 +85,14 @@ const ProjectsList = () => {
               {...project} 
               onStatusChange={updateProjectStatus}
               onDelete={deleteProject}
+              onNameChange={updateProjectName}
             />
           ))}
         </div>
         {projects.length === 0 && (
           <div className="text-center py-8">
             <p className="text-blue-600 mb-4">Aucun projet trouvé</p>
-            <Button onClick={addNewProject} className="bg-blue-500 hover:bg-blue-600 text-white">
+            <Button onClick={handleCreateProject} className="bg-blue-500 hover:bg-blue-600 text-white">
               <Plus className="w-4 h-4 mr-2" />
               Créer votre premier projet
             </Button>

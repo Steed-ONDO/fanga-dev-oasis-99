@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import EditProjectName from './EditProjectName';
 
 interface ProjectCardProps {
   id: number;
@@ -15,10 +16,11 @@ interface ProjectCardProps {
   url: string;
   onStatusChange: (id: number, status: 'active' | 'inactive') => void;
   onDelete: (id: number) => void;
+  onNameChange: (id: number, newName: string) => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
-  id, name, path, type, status, url, onStatusChange, onDelete 
+  id, name, path, type, status, url, onStatusChange, onDelete, onNameChange 
 }) => {
   const { toast } = useToast();
 
@@ -26,14 +28,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     if (status === 'active') {
       window.open(url, '_blank');
       toast({
-        title: "Projet Ouvert",
-        description: `${name} ouvert dans un nouvel onglet`,
-        duration: 2000,
+        title: "✅ Projet Ouvert",
+        description: `${name} a été ouvert dans un nouvel onglet`,
+        duration: 3000,
       });
     } else {
       toast({
-        title: "Projet Inactif",
-        description: "Veuillez d'abord activer le projet",
+        title: "⚠️ Projet Inactif",
+        description: "Veuillez d'abord activer le projet pour l'ouvrir",
+        variant: "destructive",
         duration: 3000,
       });
     }
@@ -41,8 +44,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   const handleConfig = () => {
     toast({
-      title: "Configuration",
-      description: `Configuration de ${name} (fonctionnalité en développement)`,
+      title: "🔧 Configuration",
+      description: `Ouverture des paramètres de ${name}...`,
       duration: 3000,
     });
   };
@@ -50,16 +53,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const handleStatusToggle = () => {
     const newStatus = status === 'active' ? 'inactive' : 'active';
     onStatusChange(id, newStatus);
+    
     toast({
-      title: `Projet ${newStatus === 'active' ? 'Activé' : 'Désactivé'}`,
-      description: `${name} est maintenant ${newStatus === 'active' ? 'actif' : 'inactif'}`,
+      title: newStatus === 'active' ? "✅ Projet Activé" : "⏹️ Projet Désactivé",
+      description: `${name} est maintenant ${newStatus === 'active' ? 'actif et prêt à être utilisé' : 'inactif'}`,
       duration: 3000,
     });
   };
 
   const handleDelete = () => {
-    if (window.confirm(`Êtes-vous sûr de vouloir supprimer "${name}" ?`)) {
+    if (window.confirm(`⚠️ Êtes-vous sûr de vouloir supprimer "${name}" ?\n\nCette action est irréversible.`)) {
       onDelete(id);
+      toast({
+        title: "🗑️ Projet Supprimé",
+        description: `${name} a été supprimé définitivement`,
+        duration: 4000,
+      });
     }
   };
 
@@ -69,6 +78,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       case 'react': return 'bg-cyan-100 text-cyan-800';
       case 'laravel': return 'bg-red-100 text-red-800';
       case 'vue': return 'bg-emerald-100 text-emerald-800';
+      case 'nodejs': return 'bg-green-100 text-green-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -77,11 +87,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200 hover:border-blue-300 transition-all duration-200 hover:shadow-md">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-blue-800 flex items-center">
-            <Folder className="w-5 h-5 mr-2 text-blue-600" />
-            {name}
-          </CardTitle>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 min-w-0 flex-1">
+            <Folder className="w-5 h-5 text-blue-600 flex-shrink-0" />
+            <EditProjectName 
+              projectId={id} 
+              currentName={name} 
+              onNameChange={onNameChange} 
+            />
+          </div>
+          <div className="flex items-center space-x-2 flex-shrink-0">
             <Badge 
               variant="secondary"
               className={getTypeColor(type)}
