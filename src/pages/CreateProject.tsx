@@ -6,12 +6,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { useProjects } from '@/hooks/useProjects';
 
 const CreateProject = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { addProject } = useProjects();
   const [projectData, setProjectData] = useState({
     name: '',
     type: '',
@@ -40,17 +41,26 @@ const CreateProject = () => {
       return;
     }
 
+    // Récupérer la configuration pour le chemin par défaut
+    const config = localStorage.getItem('fangal_config');
+    const defaultPath = config ? JSON.parse(config).projectsPath || '/Users/dev/htdocs' : '/Users/dev/htdocs';
+
     // Générer automatiquement le chemin et l'URL si non spécifiés
+    const projectSlug = projectData.name.toLowerCase().replace(/\s+/g, '-');
     const finalProjectData = {
-      ...projectData,
-      path: projectData.path || `/Users/dev/htdocs/${projectData.name.toLowerCase().replace(/\s+/g, '-')}`,
-      url: projectData.url || `http://localhost/${projectData.name.toLowerCase().replace(/\s+/g, '-')}`
+      name: projectData.name,
+      type: projectData.type,
+      path: projectData.path || `${defaultPath}/${projectSlug}`,
+      url: projectData.url || `http://localhost/${projectSlug}`,
+      status: 'inactive' as const
     };
 
-    // Simulation de création de projet
+    // Ajouter le projet
+    const newProject = addProject(finalProjectData);
+
     toast({
       title: "Projet Créé avec Succès!",
-      description: `${finalProjectData.name} a été créé et configuré`,
+      description: `${finalProjectData.name} a été créé et ajouté à vos projets`,
       duration: 4000,
     });
 

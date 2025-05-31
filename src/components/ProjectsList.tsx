@@ -1,41 +1,17 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import { useToast } from '@/hooks/use-toast';
+import { useProjects } from '@/hooks/useProjects';
 
 const ProjectsList = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [projects, setProjects] = useState([
-    {
-      id: 1,
-      name: 'Site E-commerce',
-      path: '/Users/dev/htdocs/ecommerce',
-      type: 'WordPress',
-      status: 'active' as const,
-      url: 'http://localhost/ecommerce'
-    },
-    {
-      id: 2,
-      name: 'Site Portfolio',
-      path: '/Users/dev/htdocs/portfolio',
-      type: 'React',
-      status: 'inactive' as const,
-      url: 'http://localhost/portfolio'
-    },
-    {
-      id: 3,
-      name: 'API Backend',
-      path: '/Users/dev/htdocs/api',
-      type: 'Laravel',
-      status: 'active' as const,
-      url: 'http://localhost/api'
-    }
-  ]);
+  const { projects, updateProjectStatus, updateProjectName, deleteProject } = useProjects();
 
   const handleCreateProject = () => {
     toast({
@@ -44,22 +20,6 @@ const ProjectsList = () => {
       duration: 2000,
     });
     navigate('/create-project');
-  };
-
-  const updateProjectStatus = (projectId: number, newStatus: 'active' | 'inactive') => {
-    setProjects(prev => prev.map(project => 
-      project.id === projectId ? { ...project, status: newStatus } : project
-    ));
-  };
-
-  const updateProjectName = (projectId: number, newName: string) => {
-    setProjects(prev => prev.map(project => 
-      project.id === projectId ? { ...project, name: newName } : project
-    ));
-  };
-
-  const deleteProject = (projectId: number) => {
-    setProjects(prev => prev.filter(project => project.id !== projectId));
   };
 
   return (

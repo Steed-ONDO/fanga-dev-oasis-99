@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Download, Upload, RefreshCw } from 'lucide-react';
+import { Plus, Download, Upload, RefreshCw, Settings } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -22,6 +22,19 @@ const QuickActions = () => {
           duration: 2000,
         });
         navigate('/create-project');
+      }
+    },
+    { 
+      icon: Settings, 
+      label: 'Configuration', 
+      color: 'bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700',
+      action: () => {
+        toast({
+          title: "⚙️ Configuration",
+          description: "Ouverture des paramètres...",
+          duration: 2000,
+        });
+        navigate('/configuration');
       }
     },
     { 
