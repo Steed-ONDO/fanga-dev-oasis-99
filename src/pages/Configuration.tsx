@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Server, Database, Folder, Shield, Save } from 'lucide-react';
@@ -65,6 +64,11 @@ const Configuration = () => {
       description: "Les paramètres ont été mis à jour avec succès",
       duration: 3000,
     });
+
+    // Rediriger vers la page d'accueil après 1 seconde
+    setTimeout(() => {
+      navigate('/');
+    }, 1000);
   };
 
   return (

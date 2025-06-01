@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Server, Settings, HelpCircle, X } from 'lucide-react';
+import { Server, Settings, HelpCircle, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -27,6 +27,27 @@ const Header = () => {
       duration: 2000,
     });
     navigate('/configuration');
+  };
+
+  const handleLogout = () => {
+    toast({
+      title: "🔌 Déconnexion",
+      description: "Déconnexion du serveur Fangal en cours...",
+      duration: 3000,
+    });
+    
+    // Simulation de la déconnexion du serveur
+    setTimeout(() => {
+      toast({
+        title: "✅ Déconnecté",
+        description: "Vous avez été déconnecté du serveur avec succès",
+        duration: 2000,
+      });
+      
+      // Ici on pourrait rediriger vers une page de connexion ou fermer l'application
+      // Pour l'instant on recharge la page pour simuler une déconnexion
+      window.location.reload();
+    }, 1500);
   };
 
   const handleHelpSubmit = (e: React.FormEvent) => {
@@ -182,6 +203,16 @@ const Header = () => {
           >
             <Settings className="w-4 h-4 mr-2" />
             Paramètres
+          </Button>
+
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="text-blue-100 hover:text-white hover:bg-red-600 transition-all duration-200"
+            onClick={handleLogout}
+          >
+            <LogOut className="w-4 h-4 mr-2" />
+            Déconnexion
           </Button>
         </div>
       </div>
