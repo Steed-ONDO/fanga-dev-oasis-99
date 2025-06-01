@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Server, Settings, HelpCircle, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -86,42 +87,31 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/50 px-6 py-4 shadow-2xl relative">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10"></div>
-      
-      <div className="flex items-center justify-between relative z-10">
-        <div className="flex items-center space-x-4">
-          {/* Enhanced Logo */}
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl shadow-2xl transform group-hover:scale-105 transition-all duration-300">
-              <Server className="w-8 h-8 text-white" />
-            </div>
+    <header className="bg-gradient-to-r from-blue-600 to-blue-800 border-b border-blue-700 px-6 py-4 shadow-lg">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange-400 to-pink-500 rounded-xl shadow-lg">
+            <Server className="w-7 h-7 text-white" />
           </div>
-          
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-              Fanga Local Server
-            </h1>
-            <p className="text-slate-400 font-medium">Environnement de Développement Premium</p>
+            <h1 className="text-2xl font-bold text-white">Fangal Local Server</h1>
+            <p className="text-blue-200">Environnement de Développement</p>
           </div>
         </div>
         
         <div className="flex items-center space-x-3">
-          {/* Enhanced Help Dialog */}
           <Dialog open={isHelpOpen} onOpenChange={setIsHelpOpen}>
             <DialogTrigger asChild>
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50 backdrop-blur-sm"
+                className="text-blue-100 hover:text-white hover:bg-blue-700 transition-all duration-200"
               >
                 <HelpCircle className="w-4 h-4 mr-2" />
                 Aide
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[500px] bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 text-white">
+            <DialogContent className="sm:max-w-[500px] bg-white">
               <DialogHeader>
                 <DialogTitle className="text-blue-800 text-xl">Demande d'Aide</DialogTitle>
               </DialogHeader>
@@ -205,22 +195,20 @@ const Header = () => {
             </DialogContent>
           </Dialog>
           
-          {/* Enhanced Settings Button */}
           <Button 
             variant="ghost" 
             size="sm" 
-            className="text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50 backdrop-blur-sm"
+            className="text-blue-100 hover:text-white hover:bg-blue-700 transition-all duration-200"
             onClick={handleSettings}
           >
             <Settings className="w-4 h-4 mr-2" />
             Paramètres
           </Button>
 
-          {/* Enhanced Logout Button */}
           <Button 
             variant="ghost" 
             size="sm" 
-            className="text-slate-300 hover:text-white hover:bg-red-600/70 transition-all duration-200 border border-slate-600/30 hover:border-red-500/50 backdrop-blur-sm"
+            className="text-blue-100 hover:text-white hover:bg-red-600 transition-all duration-200"
             onClick={handleLogout}
           >
             <LogOut className="w-4 h-4 mr-2" />

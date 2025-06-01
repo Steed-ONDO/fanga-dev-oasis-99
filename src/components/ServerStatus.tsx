@@ -33,46 +33,42 @@ const ServerStatus = () => {
   };
 
   return (
-    <Card className="bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 shadow-2xl hover:shadow-3xl transition-all duration-300 group">
-      <CardHeader className="pb-3 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-t-lg border-b border-slate-700/30">
-        <CardTitle className="text-white flex items-center">
-          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse mr-3"></div>
-          <Activity className="w-5 h-5 mr-2 text-emerald-400" />
+    <Card className="bg-white border-blue-200 shadow-lg hover:shadow-xl transition-shadow duration-200">
+      <CardHeader className="pb-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-t-lg">
+        <CardTitle className="text-blue-800 flex items-center">
+          <Activity className="w-5 h-5 mr-2 text-emerald-500" />
           Statut des Services
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4 p-6">
+      <CardContent className="space-y-3 p-4">
         {services.map((service) => {
           const Icon = service.icon;
           return (
-            <div key={service.name} className="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl border border-slate-700/30 hover:border-slate-600/50 transition-all duration-300 group/item">
-              <div className="flex items-center space-x-4">
-                <div className={`w-3 h-3 rounded-full ${service.color} animate-pulse shadow-lg`}></div>
-                <Icon className="w-5 h-5 text-slate-300 group-hover/item:text-white transition-colors duration-200" />
-                <span className="text-white font-medium group-hover/item:text-blue-300 transition-colors duration-200">{service.name}</span>
+            <div key={service.name} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-100">
+              <div className="flex items-center space-x-3">
+                <div className={`w-3 h-3 rounded-full ${service.color} animate-pulse`}></div>
+                <Icon className="w-5 h-5 text-blue-600" />
+                <span className="text-blue-900 font-medium">{service.name}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Badge 
                   variant="secondary" 
-                  className={service.status === 'running' ? 
-                    'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 
-                    'bg-red-500/20 text-red-300 border border-red-500/30'
-                  }
+                  className={service.status === 'running' ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}
                 >
                   {service.status === 'running' ? 'Actif' : 'Arrêté'}
                 </Badge>
-                <span className="text-sm text-slate-400 min-w-[40px] font-mono">
+                <span className="text-sm text-blue-600 min-w-[40px]">
                   {service.port || service.version}
                 </span>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => toggleService(service.name)}
-                  className="p-1 h-8 w-8 border-slate-600/50 hover:bg-slate-700/50 hover:border-slate-500/50 transition-all duration-200"
+                  className="p-1 h-8 w-8 border-blue-300 hover:bg-blue-100"
                 >
                   {service.status === 'running' ? 
-                    <Square className="w-3 h-3 text-red-400" /> : 
-                    <Play className="w-3 h-3 text-emerald-400" />
+                    <Square className="w-3 h-3 text-red-600" /> : 
+                    <Play className="w-3 h-3 text-emerald-600" />
                   }
                 </Button>
               </div>

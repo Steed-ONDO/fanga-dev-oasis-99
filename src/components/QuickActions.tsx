@@ -100,17 +100,17 @@ const QuickActions = () => {
   ];
 
   return (
-    <Card className="bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-      <CardHeader className="pb-3 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-t-lg border-b border-slate-700/30">
-        <CardTitle className="text-white">Actions Rapides</CardTitle>
+    <Card className="bg-white border-blue-200 shadow-lg hover:shadow-xl transition-shadow duration-200">
+      <CardHeader className="pb-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-t-lg">
+        <CardTitle className="text-blue-800">Actions Rapides</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3 p-6">
+      <CardContent className="space-y-3 p-4">
         {actions.map((action) => {
           const Icon = action.icon;
           return (
             <Button
               key={action.label}
-              className={`w-full justify-start text-white ${action.color} shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border-0 backdrop-blur-sm`}
+              className={`w-full justify-start text-white ${action.color} shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200`}
               size="sm"
               onClick={action.action}
             >
