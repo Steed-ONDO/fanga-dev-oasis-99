@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Server, Settings, HelpCircle, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -44,9 +43,8 @@ const Header = () => {
         duration: 2000,
       });
       
-      // Ici on pourrait rediriger vers une page de connexion ou fermer l'application
-      // Pour l'instant on recharge la page pour simuler une déconnexion
-      window.location.reload();
+      // Redirection vers la page de connexion
+      navigate('/login');
     }, 1500);
   };
 

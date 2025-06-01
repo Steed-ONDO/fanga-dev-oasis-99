@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import CreateProject from "./pages/CreateProject";
 import Installation from "./pages/Installation";
 import Configuration from "./pages/Configuration";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/installation" element={<Installation />} />
           <Route path="/configuration" element={<Configuration />} />
+          <Route path="/login" element={<Login />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
