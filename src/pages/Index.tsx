@@ -15,7 +15,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto space-y-6">
           {/* Welcome Section */}
           <div className="text-center space-y-2 mb-8">
-            <h2 className="text-3xl font-bold text-blue-900">Bienvenue sur Fangal Local Server</h2>
+            <h2 className="text-3xl font-bold text-blue-900">Bienvenue sur Fanga Local Server</h2>
             <p className="text-blue-700 max-w-2xl mx-auto text-lg">
               Un environnement de développement local moderne et intuitif conçu pour les développeurs. 
               Gérez vos projets, services et configurations en toute simplicité.
