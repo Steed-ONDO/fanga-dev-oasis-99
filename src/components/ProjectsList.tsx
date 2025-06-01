@@ -23,13 +23,13 @@ const ProjectsList = () => {
   };
 
   return (
-    <Card className="bg-white border-blue-200 shadow-lg hover:shadow-xl transition-shadow duration-200">
-      <CardHeader className="pb-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-t-lg">
+    <Card className="bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+      <CardHeader className="pb-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-t-lg border-b border-slate-700/30">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-blue-800">Vos Projets</CardTitle>
+          <CardTitle className="text-white text-xl">Vos Projets</CardTitle>
           <Button
             onClick={handleCreateProject}
-            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 border-0"
             size="sm"
           >
             <Plus className="w-4 h-4 mr-2" />
@@ -37,7 +37,7 @@ const ProjectsList = () => {
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="space-y-4 p-4">
+      <CardContent className="space-y-4 p-6">
         <div className="grid gap-4">
           {projects.map((project) => (
             <ProjectCard 
@@ -50,9 +50,15 @@ const ProjectsList = () => {
           ))}
         </div>
         {projects.length === 0 && (
-          <div className="text-center py-8">
-            <p className="text-blue-600 mb-4">Aucun projet trouvé</p>
-            <Button onClick={handleCreateProject} className="bg-blue-500 hover:bg-blue-600 text-white">
+          <div className="text-center py-12">
+            <div className="w-24 h-24 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Plus className="w-12 h-12 text-slate-400" />
+            </div>
+            <p className="text-slate-400 mb-6 text-lg">Aucun projet trouvé</p>
+            <Button 
+              onClick={handleCreateProject} 
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+            >
               <Plus className="w-4 h-4 mr-2" />
               Créer votre premier projet
             </Button>

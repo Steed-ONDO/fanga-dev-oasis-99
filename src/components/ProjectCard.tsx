@@ -84,43 +84,48 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   return (
-    <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200 hover:border-blue-300 transition-all duration-200 hover:shadow-md">
+    <Card className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/30 hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl group">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 min-w-0 flex-1">
-            <Folder className="w-5 h-5 text-blue-600 flex-shrink-0" />
+          <div className="flex items-center space-x-3 min-w-0 flex-1">
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Folder className="w-5 h-5 text-blue-400" />
+            </div>
             <EditProjectName 
               projectId={id} 
               currentName={name} 
               onNameChange={onNameChange} 
             />
           </div>
-          <div className="flex items-center space-x-2 flex-shrink-0">
+          <div className="flex items-center space-x-3 flex-shrink-0">
             <Badge 
               variant="secondary"
-              className={getTypeColor(type)}
+              className={`${getTypeColor(type)} border border-current/30 font-medium`}
             >
               {type}
             </Badge>
             <Badge 
               variant={status === 'active' ? 'default' : 'secondary'} 
-              className={status === 'active' ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600'}
+              className={status === 'active' ? 
+                'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 
+                'bg-slate-600/20 text-slate-400 border border-slate-600/30'
+              }
             >
               {status === 'active' ? 'Actif' : 'Inactif'}
             </Badge>
           </div>
         </div>
       </CardHeader>
-      <CardContent className="space-y-3">
-        <div className="space-y-1">
-          <p className="text-sm text-blue-700"><strong>Chemin:</strong> {path}</p>
-          <p className="text-sm text-blue-700"><strong>URL:</strong> {url}</p>
+      <CardContent className="space-y-4">
+        <div className="space-y-2 text-sm">
+          <p className="text-slate-400"><strong className="text-slate-300">Chemin:</strong> <span className="font-mono text-blue-300">{path}</span></p>
+          <p className="text-slate-400"><strong className="text-slate-300">URL:</strong> <span className="font-mono text-blue-300">{url}</span></p>
         </div>
         
         <div className="flex space-x-2 flex-wrap">
           <Button 
             size="sm" 
-            className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white shadow-sm hover:shadow-md transition-all duration-200"
+            className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105"
             onClick={handleOpen}
             disabled={status === 'inactive'}
           >
@@ -132,8 +137,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             size="sm" 
             onClick={handleStatusToggle}
             className={status === 'active' 
-              ? "bg-orange-500 hover:bg-orange-600 text-white" 
-              : "bg-emerald-500 hover:bg-emerald-600 text-white"
+              ? "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white transform hover:scale-105 transition-all duration-200" 
+              : "bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white transform hover:scale-105 transition-all duration-200"
             }
           >
             {status === 'active' ? <Square className="w-3 h-3 mr-1" /> : <Play className="w-3 h-3 mr-1" />}
@@ -143,7 +148,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <Button 
             size="sm" 
             variant="outline" 
-            className="border-blue-300 text-blue-700 hover:bg-blue-100"
+            className="border-slate-600/50 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500/50 transition-all duration-200"
             onClick={handleConfig}
           >
             <Settings className="w-3 h-3 mr-1" />
@@ -153,7 +158,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <Button 
             size="sm" 
             variant="outline" 
-            className="border-red-300 text-red-600 hover:bg-red-50"
+            className="border-red-500/30 text-red-400 hover:bg-red-500/10 hover:border-red-400/50 transition-all duration-200"
             onClick={handleDelete}
           >
             <Trash2 className="w-3 h-3" />
