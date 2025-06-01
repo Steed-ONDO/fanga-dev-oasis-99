@@ -60,7 +60,7 @@ const Installation = () => {
   const handleInstallation = () => {
     toast({
       title: "🚀 Installation Terminée",
-      description: "Fangal Server a été configuré avec succès !",
+      description: "Fanga Server a été configuré avec succès !",
       duration: 4000,
     });
 
@@ -68,7 +68,7 @@ const Installation = () => {
     setTimeout(() => {
       localStorage.setItem('fanga_installed', 'true');
       localStorage.setItem('fanga_config', JSON.stringify(installationData));
-      navigate('/');
+      navigate('/home');
     }, 2000);
   };
 

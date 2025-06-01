@@ -23,7 +23,8 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={isInstalled ? <Index /> : <Navigate to="/installation" replace />} />
+            <Route path="/" element={<Installation />} />
+            <Route path="/home" element={isInstalled ? <Index /> : <Navigate to="/" replace />} />
             <Route path="/create-project" element={<CreateProject />} />
             <Route path="/installation" element={<Installation />} />
             <Route path="/configuration" element={<Configuration />} />
