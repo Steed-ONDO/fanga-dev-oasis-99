@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Server, Settings, HelpCircle, X } from 'lucide-react';
+import { Server, Settings, HelpCircle, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -27,6 +26,21 @@ const Header = () => {
       duration: 2000,
     });
     navigate('/configuration');
+  };
+
+  const handleDisconnect = () => {
+    toast({
+      title: "🔌 Déconnexion",
+      description: "Déconnexion du serveur Fanga...",
+      duration: 2000,
+    });
+
+    // Supprimer les données d'installation pour forcer le retour à l'installation
+    setTimeout(() => {
+      localStorage.removeItem('fanga_installed');
+      localStorage.removeItem('fanga_config');
+      window.location.reload(); // Recharger pour redéclencher la vérification d'installation
+    }, 1000);
   };
 
   const handleHelpSubmit = (e: React.FormEvent) => {
@@ -73,7 +87,7 @@ const Header = () => {
             <Server className="w-7 h-7 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">Fangal Local Server</h1>
+            <h1 className="text-2xl font-bold text-white">Fanga Local Server</h1>
             <p className="text-blue-200">Environnement de Développement</p>
           </div>
         </div>
@@ -182,6 +196,16 @@ const Header = () => {
           >
             <Settings className="w-4 h-4 mr-2" />
             Paramètres
+          </Button>
+
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="text-blue-100 hover:text-white hover:bg-red-600 transition-all duration-200"
+            onClick={handleDisconnect}
+          >
+            <LogOut className="w-4 h-4 mr-2" />
+            Déconnexion
           </Button>
         </div>
       </div>
