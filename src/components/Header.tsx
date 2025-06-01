@@ -32,7 +32,7 @@ const Header = () => {
   const handleLogout = () => {
     toast({
       title: "🔌 Déconnexion",
-      description: "Déconnexion du serveur Fangal en cours...",
+      description: "Déconnexion du serveur Fanga en cours...",
       duration: 3000,
     });
     
@@ -94,7 +94,7 @@ const Header = () => {
             <Server className="w-7 h-7 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">Fangal Local Server</h1>
+            <h1 className="text-2xl font-bold text-white">Fanga Local Server</h1>
             <p className="text-blue-200">Environnement de Développement</p>
           </div>
         </div>
