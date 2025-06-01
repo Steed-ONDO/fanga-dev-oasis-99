@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check, Settings, Database, Globe, Code, ArrowRight } from 'lucide-react';
@@ -13,7 +14,7 @@ const Installation = () => {
   const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(0);
   const [installationData, setInstallationData] = useState({
-    serverPath: '/usr/local/fanga',
+    serverPath: '/usr/local/fangal',
     httpPort: '80',
     httpsPort: '443',
     phpVersion: '8.2',
@@ -25,7 +26,7 @@ const Installation = () => {
   const steps = [
     {
       id: 'welcome',
-      title: 'Bienvenue sur Fanga',
+      title: 'Bienvenue sur Fangal',
       icon: Settings,
       description: 'Configuration de votre environnement de développement local'
     },
@@ -60,15 +61,15 @@ const Installation = () => {
   const handleInstallation = () => {
     toast({
       title: "🚀 Installation Terminée",
-      description: "Fanga Server a été configuré avec succès !",
+      description: "Fangal Server a été configuré avec succès !",
       duration: 4000,
     });
 
     // Simulation de l'installation
     setTimeout(() => {
-      localStorage.setItem('fanga_installed', 'true');
-      localStorage.setItem('fanga_config', JSON.stringify(installationData));
-      window.location.reload(); // Recharger pour redéclencher la vérification d'installation
+      localStorage.setItem('fangal_installed', 'true');
+      localStorage.setItem('fangal_config', JSON.stringify(installationData));
+      navigate('/');
     }, 2000);
   };
 
@@ -82,7 +83,7 @@ const Installation = () => {
             </div>
             <div>
               <h3 className="text-2xl font-bold text-blue-800 mb-4">
-                Bienvenue sur Fanga Local Server
+                Bienvenue sur Fangal Local Server
               </h3>
               <p className="text-blue-600 text-lg">
                 Nous allons configurer votre environnement de développement en quelques étapes simples.
@@ -118,7 +119,7 @@ const Installation = () => {
                   id="serverPath"
                   value={installationData.serverPath}
                   onChange={(e) => setInstallationData({ ...installationData, serverPath: e.target.value })}
-                  placeholder="/usr/local/fanga"
+                  placeholder="/usr/local/fangal"
                 />
               </div>
               <div className="space-y-2">
