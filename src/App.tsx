@@ -8,7 +8,6 @@ import Index from "./pages/Index";
 import CreateProject from "./pages/CreateProject";
 import Installation from "./pages/Installation";
 import Configuration from "./pages/Configuration";
-import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,9 +19,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Installation />} />
-          <Route path="/home" element={<Index />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Index />} />
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/installation" element={<Installation />} />
           <Route path="/configuration" element={<Configuration />} />

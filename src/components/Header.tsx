@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Server, Settings, HelpCircle, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -31,10 +32,11 @@ const Header = () => {
   const handleLogout = () => {
     toast({
       title: "🔌 Déconnexion",
-      description: "Déconnexion du serveur Fanga en cours...",
+      description: "Déconnexion du serveur Fangal en cours...",
       duration: 3000,
     });
     
+    // Simulation de la déconnexion du serveur
     setTimeout(() => {
       toast({
         title: "✅ Déconnecté",
@@ -42,7 +44,9 @@ const Header = () => {
         duration: 2000,
       });
       
-      navigate('/login');
+      // Ici on pourrait rediriger vers une page de connexion ou fermer l'application
+      // Pour l'instant on recharge la page pour simuler une déconnexion
+      window.location.reload();
     }, 1500);
   };
 
@@ -90,7 +94,7 @@ const Header = () => {
             <Server className="w-7 h-7 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">Fanga Local Server</h1>
+            <h1 className="text-2xl font-bold text-white">Fangal Local Server</h1>
             <p className="text-blue-200">Environnement de Développement</p>
           </div>
         </div>
