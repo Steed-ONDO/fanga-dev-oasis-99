@@ -10,7 +10,13 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.05\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"1\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+      <div className="absolute inset-0 opacity-40">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 20px 20px, rgba(156, 146, 172, 0.1) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px'
+        }}></div>
+      </div>
       
       {/* Animated Gradient Orbs */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -26,7 +32,7 @@ const Index = () => {
             <div className="inline-block p-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300">
               <div className="bg-slate-900/80 backdrop-blur-xl rounded-2xl px-8 py-6">
                 <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-3">
-                  Bienvenue sur Fangal Local Server
+                  Bienvenue sur Fanga Local Server
                 </h2>
                 <p className="text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed">
                   Un environnement de développement local moderne et intuitif conçu pour les développeurs. 

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check, Settings, Database, Globe, Code, ArrowRight } from 'lucide-react';
@@ -26,7 +25,7 @@ const Installation = () => {
   const steps = [
     {
       id: 'welcome',
-      title: 'Bienvenue sur Fangal',
+      title: 'Bienvenue sur Fanga Local Server',
       icon: Settings,
       description: 'Configuration de votre environnement de développement local'
     },
@@ -67,8 +66,8 @@ const Installation = () => {
 
     // Simulation de l'installation
     setTimeout(() => {
-      localStorage.setItem('fangal_installed', 'true');
-      localStorage.setItem('fangal_config', JSON.stringify(installationData));
+      localStorage.setItem('fanga_installed', 'true');
+      localStorage.setItem('fanga_config', JSON.stringify(installationData));
       navigate('/');
     }, 2000);
   };
@@ -83,7 +82,7 @@ const Installation = () => {
             </div>
             <div>
               <h3 className="text-2xl font-bold text-blue-800 mb-4">
-                Bienvenue sur Fangal Local Server
+                Bienvenue sur Fanga Local Server
               </h3>
               <p className="text-blue-600 text-lg">
                 Nous allons configurer votre environnement de développement en quelques étapes simples.

@@ -102,7 +102,7 @@ const Header = () => {
           
           <div>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-              Fangal Local Server
+              Fanga Local Server
             </h1>
             <p className="text-slate-400 font-medium">Environnement de Développement Premium</p>
           </div>
